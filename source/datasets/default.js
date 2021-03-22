@@ -1,34 +1,37 @@
+import faker from 'faker';
+
+faker.locale = 'es';
 
 export const defaultProfile = {
-    firstName: 'Cristhian',
-    lastName: 'Huertos',
-    docNumber: '1234567',
-    location: 'Cuzco',
-    career: 'Mecanico',
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    docNumber: faker.random.number({ min: 1000000, max: 9999999 }),
+    location: faker.address.city(),
+    career: faker.name.jobType(),
     experience: [
         {
-            enterprise: 'krowdy',
-            start: '2017',
-            end: '2025'
+            enterprise: faker.company.companyName(),
+            start: faker.date.past(),
+            end: faker.date.future()
         },
         {
-            enterprise: 'Telefonica',
-            start: '2017',
-            end: '2025'
+            enterprise: faker.company.companyName(),
+            start: faker.date.past(),
+            end: faker.date.future()
         },
         {
-            enterprise: 'BCP',
-            start: '2017',
-            end: '2025'
+            enterprise: faker.company.companyName(),
+            start: faker.date.past(),
+            end: faker.date.future()
         }
     ],
     education: [
         {
-            career: 'Fisica',
-            studyCenter: 'MIT'
+            career: faker.name.jobTitle(),
+            studyCenter: faker.address.county()
         }
     ],
-    createdBy: 'Cristhian H',
-    updatedAt: '2020-01-01',
-    createdAt: '2019-01-01'
+    createdBy: faker.name.findName(),
+    updatedAt: faker.date.recent(),
+    createdAt: faker.date.recent()
 }

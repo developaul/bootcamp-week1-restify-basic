@@ -1,27 +1,24 @@
-import { defaultProfile } from '../datasets/default';
+import { generateProfiles } from '../utils';
 
 class PROFILE {
-  resolveProfile() {
-    return defaultProfile
-  }
-  resolveFullProfile() {
-    try {
-      let updatedAt = new Date()
-      const profile = this.resolveProfile()
 
-      return {
-        ...profile,
-        updatedAt
-      }
+  constructor() {
+    this.profiles = generateProfiles(100);
+  }
+
+  resolveFullProfileById(id) {
+    try {
+      const profile = this.profiles.find(p => p.id === id);
+      return profile;
     } catch (error) {
       throw error
     }
   }
 
-  resolveBasicProfile() {
+  resolveBasicProfileById(id) {
     try {
-      const profile = this.resolveProfile()
-      const { firstName, lastName, docNumber } = profile
+      const profile = this.profiles.find(p => p.id === id);
+      const { firstName, lastName, docNumber } = profile;
 
       return {
         firstName,
@@ -33,10 +30,10 @@ class PROFILE {
     }
   }
 
-  resolveInfoProfile() {
+  resolveInfoProfileById(id) {
     try {
-      const profile = this.resolveProfile()
-      const { createdBy, createdAt, updatedAt } = profile
+      const profile = this.profiles.find(p => p.id === id);
+      const { createdBy, createdAt, updatedAt } = profile;
 
       return {
         createdAt,
@@ -49,4 +46,7 @@ class PROFILE {
   }
 }
 
-export default PROFILE;
+
+const profileController = new PROFILE();
+
+export default profileController;

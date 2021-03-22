@@ -1,45 +1,56 @@
+/**
+ * {{url}}/api/profile
+ */
+
 import { Router } from 'restify-router';
 
-import { PROFILE } from '../controllers'
+import { profileController } from '../controllers';
 
 const router = new Router();
-const profileController = new PROFILE();
 
-router.get('/full', (req, res) => {
+router.get('/full/:id', (req, res) => {
+
+  const id = Number(req.params.id);
+
   try {
-    const response = profileController.resolveFullProfile()
-    res.json(response)
+    const response = profileController.resolveFullProfileById(id);
+    res.json(response);
   } catch (error) {
     res.json({
       error: error.message,
       success: false
-    })
+    });
   }
-})
+});
 
-router.get('/basic', (req, res) => {
+router.get('/basic/:id', (req, res) => {
+
+  const id = Number(req.params.id);
+
   try {
-    const response = profileController.resolveBasicProfile()
-    res.json(response)
+    const response = profileController.resolveBasicProfileById(id);
+    res.json(response);
   } catch (error) {
     res.json({
       error: error.message,
       success: false
-    })
+    });
   }
-})
+});
 
-router.get('/info', (req, res) => {
+router.get('/info/:id', (req, res) => {
+
+  const id = Number(req.params.id);
+
   try {
-    const response = profileController.resolveInfoProfile()
-    res.json(response)
+    const response = profileController.resolveInfoProfileById(id);
+    res.json(response);
   } catch (error) {
-    console.log("🚀 ~ server.get ~ error", error)
     res.json({
       error: error.message,
       success: false
-    })
+    });
   }
-})
+});
 
 export default router;

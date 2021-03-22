@@ -1,5 +1,5 @@
-import PROFILE from './profile';
+import profileController from './profile';
 
 export {
-    PROFILE
+    profileController
 }
