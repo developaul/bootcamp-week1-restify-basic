@@ -1,5 +1,5 @@
 /**
- * {{url}}/api/profile
+ * {{url}}/api/profiles
  */
 
 import { Router } from 'restify-router';
@@ -7,6 +7,20 @@ import { Router } from 'restify-router';
 import { profileController } from '../controllers';
 
 const router = new Router();
+
+router.get('/', (req, res) => {
+
+  try {
+    const response = profileController.resolveProfiles();
+    res.json(response);
+  } catch (error) {
+    res.json({
+      error: error.message,
+      success: false
+    });
+  }
+
+});
 
 router.get('/full/:id', (req, res) => {
 

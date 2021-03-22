@@ -6,6 +6,14 @@ class PROFILE {
     this.profiles = generateProfiles(100);
   }
 
+  resolveProfiles() {
+    try {
+      return { results: this.profiles };
+    } catch (error) {
+      throw error
+    }
+  }
+
   resolveFullProfileById(id) {
     try {
       const profile = this.profiles.find(p => p.id === id);
@@ -65,9 +73,6 @@ class PROFILE {
 
   resolveProfilesByCreatedAt(createdAt) {
     try {
-
-      // console.l
-      console.log(this.profiles[0]);
 
       const profiles = this.profiles.filter(p => p.createdAt.toString() === createdAt.toString());
       return { results: profiles };

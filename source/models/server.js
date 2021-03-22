@@ -14,7 +14,7 @@ class Server {
     this.router = new Router();
 
     this.paths = {
-      profile: '/api/profile',
+      profile: '/api/profiles',
       search: '/api/search'
     }
 

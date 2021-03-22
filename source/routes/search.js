@@ -12,7 +12,7 @@ const router = new Router();
 
 router.get('/profile/name/:firstname', (req, res) => {
 
-  const { firstname } = req.params.firstname;
+  const { firstname } = req.params;
 
   try {
     const response = profileController.resolveProfilesByName(firstname);
