@@ -2,7 +2,8 @@ import { createServer } from 'restify';
 import { Router } from 'restify-router';
 
 import {
-  profileRouter
+  profileRouter,
+  searchRouter
 } from '../routes';
 
 class Server {
@@ -14,6 +15,7 @@ class Server {
 
     this.paths = {
       profile: '/api/profile',
+      search: '/api/search'
     }
 
     this.routes();
@@ -21,6 +23,7 @@ class Server {
 
   routes() {
     this.router.add(this.paths.profile, profileRouter);
+    this.router.add(this.paths.search, searchRouter);
     this.router.applyRoutes(this.server);
   }
 

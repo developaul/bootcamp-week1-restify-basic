@@ -44,8 +44,39 @@ class PROFILE {
       throw error
     }
   }
-}
 
+  resolveProfilesByName(firstName) {
+    try {
+      const profiles = this.profiles.filter(p => p.firstName.toUpperCase() === firstName.toUpperCase());
+      return { results: profiles };
+    } catch (error) {
+      throw error
+    }
+  }
+
+  resolveProfilesByDocNumber(docNumber) {
+    try {
+      const profiles = this.profiles.filter(p => p.docNumber === docNumber);
+      return { results: profiles };
+    } catch (error) {
+      throw error
+    }
+  }
+
+  resolveProfilesByCreatedAt(createdAt) {
+    try {
+
+      // console.l
+      console.log(this.profiles[0]);
+
+      const profiles = this.profiles.filter(p => p.createdAt.toString() === createdAt.toString());
+      return { results: profiles };
+    } catch (error) {
+      throw error
+    }
+  }
+
+}
 
 const profileController = new PROFILE();
 
