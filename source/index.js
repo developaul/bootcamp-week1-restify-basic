@@ -1,5 +1,7 @@
-import server from './routes'
+require('dotenv').config();
 
-server.listen(8080, function() {
-  console.log('%s listening at %s', server.name, server.url);
-});
+import { Server } from './models';
+
+const server = new Server();
+
+server.listen();
